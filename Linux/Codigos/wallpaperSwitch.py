@@ -3,6 +3,7 @@ import time
 import random
 import subprocess
 import wallpaperSwitchConfig
+import ctypes
 
 root = tk.Tk()
 root.withdraw()
@@ -28,17 +29,5 @@ while True:
     usadas.append(foto)
 
     print("Usando:", foto)
-    subprocess.run([
-        "qdbus6",
-        "org.kde.plasmashell",
-        "/PlasmaShell",
-        "org.kde.PlasmaShell.evaluateScript",
-        f"""
-            var d = desktops()[0];
-            d.wallpaperPlugin = 'org.kde.image';
-            d.currentConfigGroup = ['Wallpaper', 'org.kde.image', 'General'];
-            d.writeConfig('Image', 'file://{foto}');
-            d.writeConfig('ImageFillMode', 0);
-        """
-        ])
+    ctypes.windll.user32.SystemParametersInfoW(20, 0, foto, 3)
     time.sleep(tempo)
