@@ -1,33 +1,53 @@
-import tkinter as tk
 import time
 import random
 import subprocess
-import wallpaperSwitchConfig
-import ctypes
 
-root = tk.Tk()
-root.withdraw()
+from Linux.Codigos import wallpaperSwitchConfig
 
-pasta = wallpaperSwitchConfig.pasta
-fotos = wallpaperSwitchConfig.escolherImagens(pasta)
-tempo = wallpaperSwitchConfig.tempo
 
-print("PASTA:", pasta)
-print("IMAGENS ENCONTRADAS:", fotos)
-print("QUANTIDADE:", len(fotos))
+def trocarWallpaper(foto):
+    subprocess.run([
+        "qdbus6",
+        "org.kde.plasmashell",
+        "/PlasmaShell",
+        "org.kde.PlasmaShell.evaluateScript",
+        f"""
+            var d = desktops()[0];
+            d.wallpaperPlugin = 'org.kde.image';
+            d.currentConfigGroup = ['Wallpaper', 'org.kde.image', 'General'];
+            d.writeConfig('Image', 'file://{foto}');
+            d.writeConfig('ImageFillMode', 0);
+        """
+    ])
 
-usadas = []
 
-while True:
-    disponiveis = [f for f in fotos if f not in usadas]
+def main():
+    pasta = wallpaperSwitchConfig.pasta
+    fotos = wallpaperSwitchConfig.escolherImagens(pasta)
+    tempo = wallpaperSwitchConfig.tempo
 
-    if not disponiveis:
-        usadas = []
-        disponiveis = fotos
+    print("PASTA:", pasta)
+    print("IMAGENS:", len(fotos))
+    print("TEMPO:", tempo)
 
-    foto = random.choice(disponiveis)
-    usadas.append(foto)
+    usadas = []
 
-    print("Usando:", foto)
-    ctypes.windll.user32.SystemParametersInfoW(20, 0, foto, 3)
-    time.sleep(tempo)
+    while True:
+        disponiveis = [f for f in fotos if f not in usadas]
+
+        if not disponiveis:
+            usadas = []
+            disponiveis = fotos
+
+        foto = random.choice(disponiveis)
+        trocarWallpaper(foto)
+
+        usadas.append(foto)
+
+        print("Wallpaper:", foto)
+
+        time.sleep(tempo)
+
+
+if __name__ == "__main__":
+    main()
