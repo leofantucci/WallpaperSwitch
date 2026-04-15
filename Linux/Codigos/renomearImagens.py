@@ -33,6 +33,7 @@ print("Arquivo selecionado:", arquivos)
 print("EXEMPLO -> fotos (Arquivos: fotos0, fotos1...) <- EXEMPLO")
 nome_base = input("Insira o texto base para renomear: ")
 contador = int(input("Insira o valor inicial da contagem: "))
-destino = os.path.expanduser("~/Área de trabalho/Wallpapers")
+print("Selecione o destino:")
+destino = filedialog.askdirectory(title="Escolha a pasta de wallpapers")
 
 renomearArquivos(arquivos, destino, nome_base, contador)

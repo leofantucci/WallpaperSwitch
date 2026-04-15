@@ -2,6 +2,31 @@
 <!-- Generated with glade 3.40.0 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
+  <object class="GtkWindow">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkWindow" id="main">
     <property name="name">WallpaperSwitchV0</property>
     <property name="can-focus">False</property>
@@ -22,10 +47,13 @@
             <property name="can-focus">False</property>
             <property name="left-padding">12</property>
             <child>
-              <!-- n-columns=10 n-rows=10 -->
+              <!-- n-columns=10 n-rows=14 -->
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">center</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
@@ -46,8 +74,8 @@
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
-                    <property name="top-attach">5</property>
-                    <property name="width">3</property>
+                    <property name="top-attach">6</property>
+                    <property name="width">5</property>
                   </packing>
                 </child>
                 <child>
@@ -59,35 +87,22 @@
                   <packing>
                     <property name="left-attach">1</property>
                     <property name="top-attach">1</property>
-                    <property name="width">3</property>
+                    <property name="width">5</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="inputTempo">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="input-purpose">number</property>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
-                    <property name="top-attach">7</property>
+                    <property name="top-attach">8</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
-                    <property name="label" translatable="yes">Selecionar Pasta</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">1</property>
-                    <property name="top-attach">3</property>
-                    <property name="width">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="btnTempoOk">
                     <property name="label" translatable="yes">OK</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -95,7 +110,7 @@
                   </object>
                   <packing>
                     <property name="left-attach">3</property>
-                    <property name="top-attach">7</property>
+                    <property name="top-attach">8</property>
                   </packing>
                 </child>
                 <child>
@@ -106,8 +121,8 @@
                     <property name="receives-default">True</property>
                   </object>
                   <packing>
-                    <property name="left-attach">6</property>
-                    <property name="top-attach">2</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">12</property>
                     <property name="width">2</property>
                     <property name="height">2</property>
                   </packing>
@@ -120,11 +135,156 @@
                     <property name="receives-default">True</property>
                   </object>
                   <packing>
-                    <property name="left-attach">6</property>
-                    <property name="top-attach">6</property>
+                    <property name="left-attach">4</property>
+                    <property name="top-attach">12</property>
                     <property name="width">2</property>
                     <property name="height">2</property>
                   </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="inputPasta">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="btnPasta">
+                    <property name="label" translatable="yes">Buscar</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">3</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="btnLimparBusca">
+                    <property name="label" translatable="yes">Limpar</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">5</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="btnLimparTroca">
+                    <property name="label" translatable="yes">Limpar</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">5</property>
+                    <property name="top-attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes"> </property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">10</property>
+                    <property name="width">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes"> </property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">5</property>
+                    <property name="width">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
                 <child>
                   <placeholder/>
